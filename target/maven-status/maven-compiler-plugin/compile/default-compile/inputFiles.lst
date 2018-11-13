@@ -1,15 +1,16 @@
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\exceptions\GenericExceptionMapper.java
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\exceptions\AuthenticationException.java
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\entity\User.java
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\entity\Facade.java
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\security\UserPrincipal.java
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\security\JWTSecurityContext.java
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\security\SharedSecret.java
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\rest\ApplicationConfig.java
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\entity\FacadeInterface.java
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\rest\DemoResource.java
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\security\LoginEndpoint.java
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\entity\Role.java
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\exceptions\NotFoundException.java
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\security\JWTAuthenticationFilter.java
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\test\Main.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\exceptions\GenericExceptionMapper.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\security\UserPrincipal.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\security\LoginEndpoint.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\exceptions\NotFoundException.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\entity\Role.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\entity\User.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\exceptions\AuthenticationException.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\rest\ApplicationConfig.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\cors\CorsRequestFilter.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\entity\UserFacade.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\cors\CorsResponseFilter.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\security\JWTAuthenticationFilter.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\security\JWTSecurityContext.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\utils\SetupTestUsers.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\security\SharedSecret.java
+C:\Users\jobje\Desktop\Skole CPH\CPH 3\CA-3\src\main\java\rest\DemoResource.java

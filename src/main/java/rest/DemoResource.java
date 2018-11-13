@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package rest;
 
 import javax.annotation.security.RolesAllowed;
@@ -19,20 +14,14 @@ import javax.ws.rs.core.SecurityContext;
 /**
  * REST Web Service
  *
- * @author malik
+ * @author lam@cphbusiness.dk
  */
 @Path("info")
 public class DemoResource {
 
     @Context
     private UriInfo context;
-
-    /**
-     * Creates a new instance of DemoResource
-     */
-    public DemoResource() {
-    }
-
+    
     @Context
     SecurityContext securityContext;
 
