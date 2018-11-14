@@ -1,9 +1,11 @@
 C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\exceptions\GenericExceptionMapper.java
 C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\exceptions\AuthenticationException.java
 C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\entity\User.java
-C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\entity\Facade.java
 C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\security\UserPrincipal.java
+C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\cors\CorsResponseFilter.java
 C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\security\JWTSecurityContext.java
+C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\cors\CorsRequestFilter.java
+C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\entity\UserFacade.java
 C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\security\SharedSecret.java
 C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\rest\ApplicationConfig.java
 C:\Users\malik\OneDrive\Documents\NetBeansProjects\CA3\src\main\java\entity\FacadeInterface.java

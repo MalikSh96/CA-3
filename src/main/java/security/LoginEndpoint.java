@@ -11,7 +11,7 @@ import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import entity.User;
-import entity.Facade;
+import entity.UserFacade;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -37,13 +37,14 @@ public class LoginEndpoint {
   public Response login(String jsonString) throws AuthenticationException {
 
     JsonObject json = new JsonParser().parse(jsonString).getAsJsonObject();
+    int id = json.get("id").getAsInt();
     String username = json.get("username").getAsString();
     String password = json.get("password").getAsString();
 
     //Todo refactor into facade
     try {
-      User user = Facade.getInstance().getVeryfiedUser(username, password);
-      String token = createToken(username, user.getRolesAsStrings());
+      User user = UserFacade.getInstance().getVeryfiedUser(id, username, password);
+      String token = createToken(id, username, user.getRolesAsStrings());
       JsonObject responseJson = new JsonObject();
       responseJson.addProperty("username", username);
       responseJson.addProperty("token", token);
@@ -53,12 +54,12 @@ public class LoginEndpoint {
       if (ex instanceof AuthenticationException) {
         throw (AuthenticationException) ex;
       }
-      Logger.getLogger(GenericExceptionMapper.class.getName()).log(Level.SEVERE, null, ex);
+      ex.printStackTrace();
     }
     throw new AuthenticationException("Invalid username or password! Please try again");
   }
 
-  private String createToken(String userName, List<String> roles) throws JOSEException {
+  private String createToken(int id, String userName, List<String> roles) throws JOSEException {
 
     StringBuilder res = new StringBuilder();
     for (String string : roles) {
@@ -66,7 +67,7 @@ public class LoginEndpoint {
       res.append(",");
     }
     String rolesAsString = res.length() > 0 ? res.substring(0, res.length() - 1) : "";
-//    String issuer = "semesterdemo_security_course";
+    //String issuer = "semesterdemo_security_course";
 
     JWSSigner signer = new MACSigner(SharedSecret.getSharedKey());
     Date date = new Date();
@@ -74,7 +75,7 @@ public class LoginEndpoint {
             .subject(userName)
             .claim("username", userName)
             .claim("roles", rolesAsString)
-//            .claim("issuer", issuer)
+            //.claim("issuer", issuer)
             .issueTime(date)
             .expirationTime(new Date(date.getTime() + TOKEN_EXPIRE_TIME))
             .build();

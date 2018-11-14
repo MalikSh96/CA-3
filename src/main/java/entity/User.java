@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.mindrot.jbcrypt.BCrypt;
@@ -27,6 +24,7 @@ import org.mindrot.jbcrypt.BCrypt;
  * @author malik
  */
 @Entity
+@Table(name = "users")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,18 +35,16 @@ public class User implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-    @Column(name = "username")
-    private String username;
-
+    @Column(name = "user_name", length = 25)
+    private String userName;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "password")
-    private String password;
-//    @JoinTable(name = "userroles", joinColumns = {
-//        @JoinColumn(name = "username", referencedColumnName = "username")}, inverseJoinColumns = {
-//        @JoinColumn(name = "rolename", referencedColumnName = "rolename")})
-
+    @Column(name = "user_pass")
+    private String userPass;
+    @JoinTable(name = "user_roles", joinColumns = {
+        @JoinColumn(name = "user_name", referencedColumnName = "user_name")}, inverseJoinColumns = {
+        @JoinColumn(name = "role_name", referencedColumnName = "role_name")})
     @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Role> roleList = new ArrayList();
 
@@ -66,59 +62,32 @@ public class User implements Serializable {
     public User() {
     }
 
+    //TODO Change when password is hashed
     public boolean verifyPassword(String pw) {
-        return BCrypt.checkpw(pw, password);
+        return BCrypt.checkpw(pw, userPass);
     }
 
-    public User(String username, String password) {
-        this.username = username;
+    public User(String userName, String userPass) {
+        this.userName = userName;
         String salt = BCrypt.gensalt();
-        String hash = BCrypt.hashpw(password, salt);
-        this.password = hash;
+        String hash = BCrypt.hashpw(userPass, salt);
+        this.userPass = hash;
     }
 
-    public Integer getId() {
-        return id;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserPass() {
+        return this.userPass;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
-            return false;
-        }
-        User other = (User) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setUserPass(String userPass) {
+        this.userPass = userPass;
     }
 
     public List<Role> getRoleList() {
@@ -133,9 +102,37 @@ public class User implements Serializable {
         roleList.add(userRole);
     }
 
-    @Override
-    public String toString() {
-        return "entity.User[ id=" + id + " ]";
+    public Integer getId() {
+        return id;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 61 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final User other = (User) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + '}';
+    }
 }
