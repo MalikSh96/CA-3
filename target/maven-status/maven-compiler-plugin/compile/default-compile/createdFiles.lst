@@ -17,3 +17,4 @@ rest\ApplicationConfig.class
 exceptions\Error.class
 security\UserPrincipal.class
 entity\Role.class
+swapi\PeopleResource.class
