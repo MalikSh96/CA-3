@@ -21,12 +21,14 @@ public class ApplicationConfig extends Application {
    * out calling this method in getClasses().
    */
   private void addRestResourceClasses(Set<Class<?>> resources) {
+    resources.add(cors.CorsRequestFilter.class);
+    resources.add(cors.CorsResponseFilter.class);
     resources.add(exceptions.GenericExceptionMapper.class);
     resources.add(rest.DemoResource.class);
     resources.add(rest.PlanetsResource.class);
     resources.add(security.JWTAuthenticationFilter.class);
-    resources.add(security.LoginEndpoint.class);
-    resources.add(swapi.FilmsResource.class);
+        resources.add(security.LoginEndpoint.class);
+        resources.add(swapi.FilmsResource.class);
         resources.add(swapi.PeopleResource.class);
         resources.add(swapi.SpeciesResource.class);
         resources.add(swapi.StarshipsResource.class);
