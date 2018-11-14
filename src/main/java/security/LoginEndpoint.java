@@ -11,7 +11,7 @@ import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import entity.User;
-import entity.Facade;
+import entity.UserFacade;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -42,7 +42,7 @@ public class LoginEndpoint {
 
     //Todo refactor into facade
     try {
-      User user = Facade.getInstance().getVeryfiedUser(username, password);
+      User user = UserFacade.getInstance().getVeryfiedUser(username, password);
       String token = createToken(username, user.getRolesAsStrings());
       JsonObject responseJson = new JsonObject();
       responseJson.addProperty("username", username);
@@ -66,7 +66,7 @@ public class LoginEndpoint {
       res.append(",");
     }
     String rolesAsString = res.length() > 0 ? res.substring(0, res.length() - 1) : "";
-//    String issuer = "semesterdemo_security_course";
+    String issuer = "semesterdemo_security_course";
 
     JWSSigner signer = new MACSigner(SharedSecret.getSharedKey());
     Date date = new Date();
@@ -74,7 +74,7 @@ public class LoginEndpoint {
             .subject(userName)
             .claim("username", userName)
             .claim("roles", rolesAsString)
-//            .claim("issuer", issuer)
+            .claim("issuer", issuer)
             .issueTime(date)
             .expirationTime(new Date(date.getTime() + TOKEN_EXPIRE_TIME))
             .build();
